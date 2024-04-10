@@ -9,6 +9,87 @@
 //
 // ------------------------------------------------------------------------------ //
 
+// Function to handle brand center navigation for desktop
+function handleBrandCenterNavigation() {
+    var index = $("nav.brand-center"),
+        $postsList = index.find('ul.navbar-nav');
+
+    index.prepend("<span class='storage-name' style='display:none;'></span>");
+
+    // Create array of all posts in lists
+    var postsArr = [];
+    index.find('ul.navbar-nav > li').each(function() {
+        if ($(this).hasClass("active")) {
+            var getElement = $("a", this).eq(0).text();
+            $(".storage-name").html(getElement);
+        }
+        postsArr.push($(this).html());
+    });
+
+    // Split the array into two halves
+    var firstList = postsArr.splice(0, Math.round(postsArr.length / 2)),
+        secondList = postsArr,
+        ListHTML = '';
+
+    // Function to create HTML list
+    var createHTML = function(list) {
+        ListHTML = '';
+        for (var i = 0; i < list.length; i++) {
+            ListHTML += '<li>' + list[i] + '</li>';
+        }
+    }
+
+    // Generate HTML for first list
+    createHTML(firstList);
+    $postsList.html(ListHTML);
+    index.find("ul.nav").first().addClass("navbar-left");
+
+    // Generate HTML for second list
+    createHTML(secondList);
+    // Create new list after original one
+    $postsList.after('<ul class="nav navbar-nav"></ul>').next().html(ListHTML);
+    index.find("ul.nav").last().addClass("navbar-right");
+
+    // Wrap navigation menu
+    index.find("ul.nav.navbar-left").wrap("<div class='col-half left'></div>");
+    index.find("ul.nav.navbar-right").wrap("<div class='col-half right'></div>");
+
+    // Selection Class
+    index.find('ul.navbar-nav > li').each(function() {
+        var dropDown = $("ul.dropdown-menu", this),
+            megaMenu = $("ul.megamenu-content", this);
+        dropDown.closest("li").addClass("dropdown");
+        megaMenu.closest("li").addClass("megamenu-fw");
+    });
+
+    var getName = $(".storage-name").html();
+    if (!getName == "") {
+        $("ul.navbar-nav > li:contains('" + getName + "')").addClass("active");
+    }
+}
+
+// Function to handle responsive behavior
+function handleResponsive() {
+    var windowWidth = window.innerWidth;
+
+    if (windowWidth <= 768) {
+        // Code for small screens
+        // You can add specific behavior for small screens here
+    } else {
+        // Code for larger screens
+        handleBrandCenterNavigation();
+    }
+}
+
+// Call the function on page load
+handleResponsive();
+
+// Listen for window resize event and call the function again
+window.addEventListener('resize', function() {
+    handleResponsive();
+});
+
+
 (function ($) {
 	"use strict";
     
@@ -214,7 +295,7 @@
             // ------------------------------------------------------------------------------ //
             // Wrapper
             // ------------------------------------------------------------------------------ //
-            $("body").wrapInner( "<div class='wrapper'></div>");
+            $("body").wrapInner( "<div class='wrapper' style='max-width:100%'></div>");
         }, 
         
 

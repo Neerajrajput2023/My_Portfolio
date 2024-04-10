@@ -42,7 +42,6 @@ body{
 	font-size:16px;
 	color: #676a81;
 	background: #fff;
-    max-width:1920px;
     margin:0 auto;
 	overflow-x:hidden;
 }
@@ -104,11 +103,12 @@ html,body{
     position: relative;
     z-index: 9999;
 }
-@media (min-width: 1024px){}
+
+/* @media (min-width: 1024px){}
 nav.navbar.bootsnav.no-background {
     background-color: #fff;
     border: none;
-}
+} */
 
 nav.navbar.bootsnav {
     background-color: #fff;
@@ -125,6 +125,35 @@ nav.navbar.bootsnav {
     padding: 33px 0px 57px;
     text-transform: uppercase;
 }
+
+.navbar-header {
+    display: flex;
+    align-items: center;
+}
+
+.navbar-toggle {
+    display: none; /* Hide the toggle button by default */
+}
+
+.navbar-brand {
+    margin-right: auto; /* Push the brand link to the left */
+}
+@media (max-width: 768px) {
+    .navbar-header {
+        flex-direction: row-reverse; /* Reverse the order of elements on small screens */
+    }
+
+    .navbar-toggle {
+        display: block; /* Show the toggle button on small screens */
+        margin-left: auto; /* Push the toggle button to the left */
+    }
+
+    .navbar-brand {
+        margin-right: 0; /* Remove the margin on small screens */
+    }
+}
+
+
 /*.navbar-brand*/
 
 /*.nav li*/
@@ -189,8 +218,9 @@ nav.navbar.bootsnav .navbar-toggle i{color: #d92cf9;}
     display: flex;
     align-items: center;
     justify-content: center;
+    max-width: 100%;
     position:relative;
-    background:url(../images/about/kmc_20240408_232334.png)no-repeat;
+    background:url(../images/about/1000009870-01.jpeg.jpg)no-repeat;
     background-size:cover;
     background-position: center;
     height:890px;
@@ -277,13 +307,13 @@ nav.navbar.bootsnav .navbar-toggle i{color: #d92cf9;}
     content: " ";
     top: 0;
     left:  0;
-    width: 109%;
-    height:  100%;
-    background: rgba(31,44,108,.3);
+    width: 100%;
+    height:  190%;
+    background: rgba(31, 44, 108, 0);
 }
 .single-about-img img {
     max-width: 500px;
-    height: 468px;
+    height: 590px;
 }
 .about-list-icon{
     display: inline-flex;
@@ -292,7 +322,7 @@ nav.navbar.bootsnav .navbar-toggle i{color: #d92cf9;}
     position: absolute;
     bottom: 0;
     left: 0;
-    width: 109%;
+    width: 103%;
     height: 90px;
     background: #1f2c6c;
     
@@ -409,11 +439,38 @@ span.single-timeline-horizontal.spacial-horizontal-line {width: 88px;}
     margin-right: 10px; /* Add spacing between containers */
     overflow: hidden; /* Hide overflowing content */
     text-align: center; /* Center content horizontally */
+    padding-top: 15px;
+    position: relative;
+    l
+    
 }
 
 .logo-container img {
-    max-width: 50%; /* Ensure image doesn't exceed container width */
+    max-width: 50%;
+    transition: transform 0.3s ease; /* Ensure image doesn't exceed container width */
 }
+
+.logo-container:hover img {
+    transform: scale(1.1); /* Scale up the image on hover */
+    z-index: 1; /* Ensure the hovered image appears on top */
+}
+
+.logo-container p {
+    position: absolute; /* Position the text absolutely */
+    bottom: 10px; /* Adjust the distance from the bottom */
+    left: 0;
+    right: 0;
+    color: #000000; /* background-color: rgb(241, 241, 241); Add background color */
+    padding: -20px; /* Add padding */
+    margin: 0 auto; /* Remove default margin */
+    transition: opacity 0.3s ease; Add transition effect
+}
+
+.logo-container:hover p {
+    opacity: 1; /* Show the text on hover */
+}
+
+
 .logo-container-wrapper {
      margin-top: 11px;
      margin-bottom: 11px; /* Ensure image doesn't exceed container width */
@@ -888,4 +945,34 @@ span.single-timeline-horizontal.spacial-horizontal-line {width: 88px;}
     0%   {bottom:0px;}
     100%  {bottom:7px;}
 }
+
+@media (max-width: 412px) {
+    
+    .navbar-header {
+        flex-direction: row-reverse; /* Reverse the order of elements on small screens */
+    }
+
+    .navbar-toggle {
+        display: block; /* Show the toggle button on small screens */
+        margin-left: auto; /* Push the toggle button to the left */
+    }
+
+    .navbar-brand {
+        margin-right: 0; /* Remove the margin on small screens */
+    }
+}
+
+
+/*.navbar-brand*/
+
+/*.nav li*/
+nav.navbar.bootsnav ul.nav > li > a {
+    font-size: 20px;
+    font-weight: 400;
+    text-transform:uppercase;
+    -webkit-transition: 0.3s linear; 
+    -moz-tra
+    
+}
+
 /*========================Thank you=================

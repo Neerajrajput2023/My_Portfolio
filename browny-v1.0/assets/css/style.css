@@ -220,9 +220,9 @@ nav.navbar.bootsnav .navbar-toggle i{color: #d92cf9;}
     justify-content: center;
     max-width: 100%;
     position:relative;
-    background:url(../images/about/1000009870-01.jpeg.jpg)no-repeat;
+    background:#081b29;
     background-size:cover;
-    background-position: center;
+    background-position:right;
     height:890px;
 }
 .welcome-hero:before{
@@ -270,6 +270,12 @@ nav.navbar.bootsnav .navbar-toggle i{color: #d92cf9;}
 }
 .header-text a:hover{ box-shadow: 0 5px 20px rgba(0,0,0,.4);background:#9f00ff;border: 1px solid #9f00ff;}
 /*.header-text-area*/
+
+.hero-section{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
 
 /*-------------------------------------
         4.  About
